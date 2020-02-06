@@ -39,6 +39,15 @@ public class AndroidDemoTest extends BaseTest {
 		app.login("company", "company");
 		app.logout();
 	}
+	@Test
+	@Parameters({ "deviceQuery" })
+	public void makePayment(@Optional(DEFAULT_QUERY) String deviceQuery) throws Exception {
+
+		app.init(deviceQuery, "Make Payment");
+		app.login("company", "company");
+		app.makePayment("123456", "guy", 10, "USA");
+		app.logout();
+	}
 
 
 	@AfterMethod

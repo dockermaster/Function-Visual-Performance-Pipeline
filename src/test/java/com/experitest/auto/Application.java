@@ -76,6 +76,20 @@ public class Application {
 
     }
 
+    public void makePayment(String phone, String name, int amount, String country){
+        seetest.startStepsGroup("Make payment");
+        driver.findElement(By.xpath("//*[@text='Make Payment']")).click();
+        driver.findElement(By.xpath("//*[@id='phoneTextField']")).sendKeys(phone);
+        driver.findElement(By.xpath("//*[@id='nameTextField']")).sendKeys(name);
+        driver.findElement(By.xpath("//*[@id='amountTextField']")).sendKeys(String.valueOf(amount));
+        driver.findElement(By.xpath("//*[@text='Select']")).click();
+        driver.findElement(By.xpath("//*[@text='" + country + "']")).click();
+        driver.findElement(By.xpath("//*[@text='Send Payment']")).click();
+        driver.findElement(By.xpath("//*[@text='Yes']")).click();
+        seetest.stopStepsGroup();
+
+    }
+
     protected String getProperty(String property, Properties props, String defaultValue) {
         if (System.getProperty(property) != null) {
             return System.getProperty(property);
