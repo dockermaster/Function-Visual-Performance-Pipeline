@@ -34,6 +34,7 @@ public class Application {
             System.out.println("[INFO] Redirecting test to the current device.");
             deviceQuery = adhocDeviceQuery;
         }
+
         dc.setCapability("deviceQuery", deviceQuery);
         dc.setCapability("reportDirectory", "reports");
         dc.setCapability("reportFormat", "xml");
@@ -48,6 +49,7 @@ public class Application {
         dc.setCapability("testName", testName);
         driver = new AndroidDriver<>(new URL(getProperty("url",cloudProperties, null) + "/wd/hub"), dc);
         seetest = new SeeTestClient(driver);
+        seetest.report("Init driver connection to device: " + deviceQuery, true);
 
     }
     public void login(String user, String password){
