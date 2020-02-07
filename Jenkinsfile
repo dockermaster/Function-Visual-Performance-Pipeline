@@ -50,8 +50,17 @@ pipeline {
       }
     }
     stage('Check Performance') {
-      steps {
-        powershell 'echo \'{"filters":["app_version":1.1,"app_name":"EriBank"]"compare_to_filter":["app_name":"EriBank","app_version","1.0,0.9,0.8"] [{"name":"*","matric":"durration","acceptade_change":"5%"},{"name":"Login","matric":"cpu_avg","acceptade_change":"5%"}]}\';echo \'https://invis.io/DXS4GF3QH9C\'; exit 0'
+      parallel {
+        stage('Check Performance') {
+          steps {
+            powershell 'echo \'{"filters":["app_version":1.1,"app_name":"EriBank"]"compare_to_filter":["app_name":"EriBank","app_version","1.0,0.9,0.8"] [{"name":"*","matric":"durration","acceptade_change":"5%"},{"name":"Login","matric":"cpu_avg","acceptade_change":"5%"}]}\';echo \'https://invis.io/DXS4GF3QH9C\'; exit 0'
+          }
+        }
+        stage('Check Visual') {
+          steps {
+            sleep 5
+          }
+        }
       }
     }
   }
