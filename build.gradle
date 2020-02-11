@@ -29,7 +29,7 @@ dependencies {
 	compile 'io.appium:java-client:6.1.0'
 	compile 'com.experitest:repo:+'
 	compile 'com.experitest:appium-seetest-extension:+'
-
+	compile 'com.applitools:eyes-selenium-java3:+'
 }
 
 test {

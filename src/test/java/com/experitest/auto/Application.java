@@ -16,6 +16,7 @@ import java.net.URL;
 import java.util.Properties;
 
 public class Application {
+	public AndroidDriver getDriver() { return driver; }
     private AndroidDriver driver;
     private SeeTestClient seetest;
     protected DesiredCapabilities dc = new DesiredCapabilities();
